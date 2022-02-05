@@ -1,13 +1,18 @@
-mylist = ['apple', 'banana', 'cherry']
-print(len(mylist))
+# mylist = ['apple', 'banana', 'cherry']
+# print(len(mylist))
+#
+# string = 'Hello'
+# len(string)
+#
+#
+# d = {'a': 1, 'b': 1, 'c': 1, 'd': 1}
+# keys = list(d)
+# len(keys)
 
-string = 'Hello'
-len(string)
+mystr = "Привет Python!"
+underline = '-' * len(mystr)
+print(f'{mystr}\n{underline}')
 
-
-d = {'a': 1, 'b': 1, 'c': 1, 'd': 1}
-keys = list(d)
-len(keys)
 #
 #
 # for number in [0, 1, 2, 3, 4]:
