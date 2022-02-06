@@ -1,38 +1,52 @@
-# mylist = ['apple', 'banana', 'cherry']
+# mylist = ['apple', 'banana', 'cherry', 1, 2, 3, 4, 5,
+#           {'a': 1, 'b': 1, 'c': 1, 'd': 1}]
 # print(len(mylist))
 #
 # string = 'Hello'
-# len(string)
-#
+# print(len(string))
 #
 # d = {'a': 1, 'b': 1, 'c': 1, 'd': 1}
-# keys = list(d)
-# len(keys)
-
-mystr = "Привет Python!"
-underline = '-' * len(mystr)
-print(f'{mystr}\n{underline}')
+# key= list(d.keys())
+# values = list(d.values())
+# print(len(d))
+#
+# mystr = "Привет Python!"
+# underline = '-' * len(mystr)
+# print(f'{underline}\n{mystr}\n{underline}')
 
 #
-#
-# for number in [0, 1, 2, 3, 4]:
+# new_list = [0, 1, 2, 3, 4]
+# print(type(new_list))
+# for number in new_list:
 #     print(number)
 #
 # # ==================================
 #
-# for num in range(5):
+
+# import random, time
+# print(time.time())
+# time.sleep(5)
+# print(time.time())
+# print(random.randrange(3, 9))
+# print(list(range(100,1, -1)))
+
+# for num in range(0,100,20):
+# # for num in range(0,5,1):==>range(5)
+# for num in range(10):
 #     print(num)
 # else:
 #     print("Числа закончились")
 
 # ==================================
 # for num in range(5):
-#     if num ==3:
+#     if num == 3:
+#         print(num)
 #         break
 #     else:
 #         print(num)
 # else:
 #     print("Числа закончились")
+
 # # ==================================
 #
 # for num in range(5):
@@ -64,9 +78,28 @@ print(f'{mystr}\n{underline}')
 # i = 0
 # while i < 5:
 #     if i == 3:
+#         i += 1
 #         continue
+#
 #     else:
 #         print(i)
 #         i += 1
 # else:
 #     print("Конец")
+
+# import time
+#
+# end_time = time.time() + 20
+#
+# while time.time() < end_time:
+#     print("Ok lets wait 5 sec")
+#     time.sleep(5)
+# else:
+#     print("Alarm")
+
+def generator(rang):
+    for num in range(rang):
+        yield num
+
+
+generator(10)
