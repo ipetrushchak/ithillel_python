@@ -96,10 +96,35 @@
 #     time.sleep(5)
 # else:
 #     print("Alarm")
+#
+# def generator(rang):
+#     for num in range(rang):
+#         yield num
+#
+#
+# generator(10)
+# """
+# This is program written for finding the max power of two, which will be no more than given number
+# """
+#
+# N = int(input('Choose your number: '))
+# n = 1
+# pow = 0
+#
+# while N >= n:
+#     n *= 2
+#     pow +=1
+# else:
+#     print(int(n/2), 'is the max power of 2, which is no more than your number. It is 2 in the power of', (pow-1))
+n1 = int(input("Введите число: "))
 
-def generator(rang):
-    for num in range(rang):
-        yield num
+n2 = 0
 
+while n1 > 0:
+    digit = n1 % 10
+    n1 = n1 // 10
 
-generator(10)
+    n2 = n2 * 10
+    n2 = n2 + digit
+
+print(n2)
