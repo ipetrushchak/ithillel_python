@@ -87,16 +87,15 @@
 # else:
 #     print("Конец")
 
-import time
-import random
-
-end_time = time.time() + 20
-
-while time.time() < end_time:
-    print(random.randint(0, 10))
-    time.sleep(5)
-else:
-    print("Alarm")
+# import time
+#
+# end_time = time.time() + 20
+#
+# while time.time() < end_time:
+#     print("Ok lets wait 5 sec")
+#     time.sleep(5)
+# else:
+#     print("Alarm")
 #
 # def generator(rang):
 #     for num in range(rang):
@@ -117,4 +116,15 @@ else:
 #     pow +=1
 # else:
 #     print(int(n/2), 'is the max power of 2, which is no more than your number. It is 2 in the power of', (pow-1))
+n1 = int(input("Введите число: "))
 
+n2 = 0
+
+while n1 > 0:
+    digit = n1 % 10
+    n1 = n1 // 10
+
+    n2 = n2 * 10
+    n2 = n2 + digit
+
+print(n2)
