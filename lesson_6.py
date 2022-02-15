@@ -157,9 +157,9 @@
 # nums2 = [100, 200, 300, 400, 500]
 # print([x * y for x, y in zip(nums, nums2)])
 # # =============
-# list_1 = [1, 2, 3]
-# list_2 = [4, 5, 6]
-# print([x+y for x, y in zip(list_1,list_2)])
+list_1 = [1, 2, 3]
+list_2 = [4, 5, 6]
+print([x+y for x, y in zip(list_1,list_2)])
 # # =========== zip и кортежи
 # a = [1, 2, 3]
 # b = [100, 200, 300]
