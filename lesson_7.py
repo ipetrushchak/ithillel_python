@@ -248,3 +248,9 @@ import copy
 # age = person.get('age')
 # person = {'name': 'Phill', 'age': 22}
 # print('age =', age)
+month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+         "December"]
+numbers = range(1, 13)
+
+dict_months = dict(zip(month,numbers))
+print(dict_months)
