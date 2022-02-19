@@ -133,7 +133,7 @@ Set, Frozenset, Dict
 # ========== Симметрическая разность множеств
 # это множество, включающее все элементы исходных множеств, не принадлежащие одновременно обоим исходным множествам
 # non_positive = {-3, -2, -1, 0}
-# non_negative = {0, 1, 2, 3}
+# non_negative = {0, 1, 2, 3} # или используется set(range(4))
 # # Обратите внимание, что оператор `^` может применяться только для объектов типа set
 # non_zero = non_positive ^ non_negative
 # print(non_zero)
@@ -148,14 +148,13 @@ Set, Frozenset, Dict
 #
 # setCat.add('э') # можем добавить
 # print(setCat)
-#
+# setCat.
 # frozenCat.add('e') # эта строка вызовет ошибку при компиляции
 # ==================== DICTs
-
 # Создадим пустой словать Capitals
 # Capitals = dict()
-#
-# # Заполним его несколькими значениями
+
+# Заполним его несколькими значениями
 # Capitals['Hungary'] = 'Budapest'
 # Capitals['Ukraine'] = 'Kiev'
 # Capitals['USA'] = 'Washington'
@@ -164,7 +163,7 @@ Set, Frozenset, Dict
 #
 #
 # Countries = ['Hungary', 'France', 'USA','Turkey', 'Russia']
-#
+
 # print(Capitals)
 # for country in Countries:
 #     # Для каждой страны из списка проверим, есть ли она в словаре Capitals
@@ -172,35 +171,86 @@ Set, Frozenset, Dict
 #         print('Столица страны ' + country + ': ' + Capitals[country])
 #     else:
 #         print('В базе нет страны c названием ' + country)
-# # =============
+# =============
 # Capitals = {'Hungary': 'Budapest', 'Ukraine': 'Kiev', 'USA': 'Washington'}
 # Capitals = dict(Hungary = 'Budapest', Ukraine = 'Kiev', USA = 'Washington')
 # Capitals = dict([("Hungary", "Budapest"), ("Ukraine", "Kiev"), ("USA", "Washington")])
-# Capitals = dict(zip(["Hungary", "Ukraine", "USA"], ["Budapest", "Kiev", "Washington"]))
+# capitals_of_the_countries = dict(zip(["Hungary", "Ukraine", "USA"], ["Budapest", "Kiev", "Washington"]))
 # print(Capitals)
-
 # ============== Работа с элементами словаря
-# A = {'ab' : 'ba', 'aa' : 'aa', 'bb' : 'bb', 'ba' : 'ab'}
+import copy
+
 #
-# key = 'ac'
-# if key in A:
-#     del A[key]
-#
+# a = {'ab': 'ba', 'aa': 'aa', 'bb': 'bx', 'ba': 'ab'}  # a= {}
+# a["ab"] = "ax"
+# copy_a = copy.copy(a)
+# deepcopy_a = copy.deepcopy(a)
+# copy_a["ab"] = "ax"
+# print(copy_a, deepcopy_a)
+# https://pythonworld.ru/moduli/modul-copy.html
+# #
+# key = 'ba'
 # try:
-#     del A[key]
+#     del a[key]
 # except KeyError:
-# 	print(f'There is no element with key {key} in dict')
-# print(A)
+#     print(f'There is no element with key {key} in dict')
+# print(a)
+
 
 # ============ Перебор элементов словаря
-A = dict(zip('abcdef', list(range(6))))
-for key in A:
-    print(key, A[key])
+# a = dict(zip('abcdef', list(range(6))))
+# for key in a:
+#     print(key, a[key])
 
-# ===============================
+# # =============================== fromkeys
+# # dictionary.fromkeys(sequence[, value])
+# colors = {"red", "green", "blue"}
+# # numbers = range(13)
+# new_dict = dict.fromkeys(colors, "name")
+# # new_dict2=
+# print(new_dict)
+#
+# # vowels keys
+# keys = {'a', 'e', 'i', 'o', 'u' }
+# value = [1]
+#
+# vowels = dict.fromkeys(keys, value)
+# print(vowels)
+#
+# # updating the value
+# value.append(2)
+# print(vowels)
+# ============= get
 
+# a = {'ab': 'ba', 'aa': 'aa', 'bb': 'bx', 'ba': 'ab'}  # a= {}
+# print(a.get('ab'))
+# # ================= items v python 3.x and viewitems() in ver2.x
+# # print(type(a.items()))
+# print(a.popitem())
+# person = {'name': 'Phill', 'age': None, 'salary': 3500.0}
 
+# # ('salary', 3500.0) is inserted at the last, so it is removed.
+# result = person.popitem()
+#
+# print('Return Value = ', result)
+# print('person = ', person)
+#
+# # inserting a new element pair
+# person['profession'] = 'Plumber'
+#
+# # now ('profession', 'Plumber') is the latest element
+# result = person.popitem()
+#
+# print('Return Value = ', result)
+# person.pop('salary')
+# print(person)
+# age = person.setdefault('age', 22)
+# age = person.get('age')
+# person = {'name': 'Phill', 'age': 22}
+# print('age =', age)
+month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+         "December"]
+numbers = range(1, 13)
 
-
-
-
+dict_months = dict(zip(month,numbers))
+print(dict_months)
