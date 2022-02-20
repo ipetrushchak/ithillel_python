@@ -2,6 +2,7 @@
 Функции
 """
 
+
 # ======= Inbuilt functions
 # dict([object]) - преобразование к словарю.
 # frozenset([последовательность]) – замороженная послеовательность
@@ -23,6 +24,7 @@
 # month_with_numbers = dict(zip(months, list(range(1, 13))))
 # print(month_with_numbers)
 
+
 # =======================
 # def add(x, y):
 #     return \
@@ -32,34 +34,37 @@
 # print(b)
 # c=add('abc', 'def')
 # print(c)
-#Sololearn: learn ot Code
-t=(1,2,3)
-a,b,c,d = t
-print(a)
-print(b)
-print(c)
-print(d)
+# Sololearn: learn ot Code
+# t=(1,2,3)
+# a,b = t
+# print(a)
+# print(b)
+# print(c)
+# print(d)
 # print(sum(range(10)))# # -------
 # print(add(100, 120))
 # # ----
-# def compute_surface(radius: int) -> float:
+# def compute_surface(radius: float) -> float:
 #     from math import pi
 #     return pi * radius * radius
-# =========
-# def newfunc(n):
+#
+#
+# print(compute_surface(14.8))
+# # =========
+# def newfunc(n): #1 n=100, #2 n=200
 #     def myfunc(x):
 #         return x + n
 #     return myfunc
-# new = newfunc(100)  # new - это тоже функция
-# print(new(200))
+# new = newfunc(100)  # new - это тоже функция  n=100
+# print(myfunc(250))
 # =========
-# def func(a, b, c=2): # c - необязательный аргумент
+# def function_sample(a, b, c=2):  # c - необязательный аргумент
 #     return a + b + c
 #
-# func(1, 2)  # a = 1, b = 2, c = 2 (по умолчанию)
-# func(1, 2, 3)  # a = 1, b = 2, c = 3
-# func(a=1, b=3)  # a = 1, b = 3, c = 2
-# func(a=3, c=6)  # a = 3, c = 6, b не определен
+#
+# print(function_sample(1, 2)) # a = 1, b = 2, c = 2 (по умолчанию)
+# print(function_sample(1, 2, 3))  # a = 1, b = 2, c = 3
+# print(function_sample(b=6, a=1, c=6)) # a = 3, c = 6, b не определен
 # =============Глобальные и локальные переменные
 # def f():
 #     x = 100
@@ -72,23 +77,20 @@ print(d)
 # ==============
 # x = 100
 #
-#
+# from lesson_7 import dict_months
 # def f():
 #     print(x)
 #
 #
 # f()
-# print(x)
+# print(dict_months['March'])
 # # ==============
-# x = 100
-#
-#
 # def f():
 #     global x  # Определение глобальной переменной
 #     x = 200
 #
 #
-# f()
+# # f()
 # print(x)
 
 
@@ -104,8 +106,8 @@ print(d)
 #         print(f'Пароль для пользователя {username} прошел все проверки')
 #         return True
 #
-#
-# check_passwd(password='12345', username='nata', min_length=4)
+# # print(check_passwd("Vania","Vania"))
+# print(check_passwd(password='12345', username='nata'))
 
 
 # ========== *args
@@ -123,14 +125,25 @@ print(d)
 # adder(4, 5, 6, 7)
 # adder(1, 2, 3, 5, 6)
 # ==========
-# def intro(**data):
-#     print("\nData type of argument: ",type(data))
-#
-#     for key, value in data.items():
-#         print("{} is {}".format(key, value))
-#
-# intro(Firstname="Sita", Lastname="Sharma", Age=22, Phone=1234567890)
-# intro(Firstname="John", Lastname="Wood", Email="johnwood@nomail.com", Country="Wakanda", Age=25, Phone=9876543210)
+def intro(**data):
+    print("\nData type of argument: ", type(data))
+
+    for key, value in data.items():
+        print(f"{key} is {value}")
+
+final_dict={}
+
+# print(intro(Firstname="Sita",
+#             Lastname="Sharma",
+#             Age=22,
+#             Phone=1234567890))
+print(
+    intro(Firstname="John",
+          Lastname="Wood",
+          Email="johnwood@nomail.com",
+          Country="Wakanda",
+          Age=25,
+          Phone=9876543210))
 # =================== Lambda
 # sum_arg = lambda a, b: a + b
 # print(sum_arg(1, 2))
@@ -199,12 +212,12 @@ print(d)
 #     print(next(gen))
 #     iter += 1
 # =============== Decorator
-# def decorator_function(func):
+# def decorator_function(function_sample):
 #     def wrapper():
 #         print('Функция-обёртка!')
-#         print(f'Оборачиваемая функция: {func}')
+#         print(f'Оборачиваемая функция: {function_sample}')
 #         print('Выполняем обёрнутую функцию...')
-#         func()
+#         function_sample()
 #         print('Выходим из обёртки')
 #     return wrapper
 # @decorator_function
@@ -212,12 +225,12 @@ print(d)
 #     print('Hello world!')
 # print(hello_world())
 # ============ Пример использования
-# def benchmark(func):
+# def benchmark(function_sample):
 #     import time
 #
 #     def wrapper():
 #         start = time.time()
-#         func()
+#         function_sample()
 #         end = time.time()
 #         print(f'[*] Время выполнения: {end - start} секунд.')
 #
