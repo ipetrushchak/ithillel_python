@@ -14,6 +14,7 @@
 # complex([real[, imag]]) - преобразование к комплексному числу
 # print(bool(4))
 # print(bool())
+# print(bool(None))
 # print(bool(False))
 # print(bool("False"))
 #
@@ -23,11 +24,22 @@
 # print(month_with_numbers)
 
 # =======================
-# def add(x, y): return x + y
+# def add(x, y):
+#     return \
+#         x + y
 # # --------
-# add(1, 10)
-# add('abc', 'def')
-# # -------
+# b=add(15,59)
+# print(b)
+# c=add('abc', 'def')
+# print(c)
+#Sololearn: learn ot Code
+t=(1,2,3)
+a,b,c,d = t
+print(a)
+print(b)
+print(c)
+print(d)
+# print(sum(range(10)))# # -------
 # print(add(100, 120))
 # # ----
 # def compute_surface(radius: int) -> float:
