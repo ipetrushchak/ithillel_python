@@ -60,3 +60,45 @@
 # squared = map(square, numbers)
 # print(list(squared))
 # =======
+# Введение в Алгоритмы
+# Операторы членства (Membership Operators)
+# print('apple' in ['orange', 'apple', 'grape'],
+#       't' in 'pythonist',
+#       'q' in 'pythonist')
+
+# Линейный поиск
+# def LinearSearch(lys, element):
+#     for i in range (len(lys)):
+#         if lys[i] == element:
+#             return i
+#     return -1
+# print(LinearSearch([1,2,3,4,5,2,1], 2))
+# ================ Бинарный поиск через итеративную реализацию
+def BinarySearch(lys, val):
+    first = 0
+    last = len(lys)-1
+    index = -1
+    while (first <= last) and (index == -1):
+        mid = (first+last)//2
+        if lys[mid] == val:
+            index = mid
+        else:
+            if val<lys[mid]:
+                last = mid -1
+            else:
+                first = mid +1
+    return index
+print(
+    BinarySearch([10,20,30,40,50], 10),
+    BinarySearch([10,20,30,40,50], 20),
+    BinarySearch([10,20,30,40,50], 30),
+    BinarySearch([10,20,30,40,50], 40),
+    BinarySearch([10,20,30,40,50], 50),
+    BinarySearch([10,20,30,40,50], 9),
+    BinarySearch([10,20,30,40,50], 51),
+    BinarySearch([10,20,30,40,50], 100)
+)
+# https://techrocks.ru/2020/08/12/python-search-algorithms/
+# Сортировка методом "Пузырька"
+# Сортировка выбором
+# Сортировка вставками
