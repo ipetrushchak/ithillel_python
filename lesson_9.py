@@ -6,12 +6,11 @@
 #         print('Выполняем обёрнутую функцию...')
 #         function_sample()
 #         print('Выходим из обёртки')
+#
 #     return wrapper
+#
+#
 # @decorator_function
-
-# def hello_world():
-#     print('Hello world!')
-# print(hello_world())
 
 # ==============Вариант №2
 # def decorator2(function_sample, *arg, **kwargs):
@@ -20,8 +19,12 @@
 #     print('Выполняем обёрнутую функцию...')
 #     function_sample(*arg, **kwargs)
 #     print('Выходим из обёртки')
-
-
+#
+#
+# def hello_world():
+#     print('Hello world!')
+#
+# decorator2(hello_world)
 # ============ Пример использования
 # def benchmark(function_sample):
 #     import time
@@ -38,15 +41,14 @@
 # @benchmark
 # def fetch_webpage():
 #     import requests
-#     webpage = requests.get('https://google.com')
+#     return requests.get('https://google.com')
 #
-#
+
 # fetch_webpage()
 # =========  Функция filter
 # список чисел
 # numbers = [1, 2, 4, 5, 7, 8, 10, 11]
 #
-
 # функция, которая проверяет числа
 # def filter_odd_num(in_num):
 #     if in_num % 2 == 0:
@@ -54,7 +56,7 @@
 #     else:
 #         return False
 #
-#
+# #
 # out_filter = filter(filter_odd_num, numbers)
 #
 # print("Тип объекта out_filter: ", type(out_filter))
@@ -62,13 +64,15 @@
 #
 
 # ========= map
+# numbers = [1, 2, 3, 4, 5]
 # def square(number):
 #     return number ** 2
 #
-#
-# numbers = [1, 2, 3, 4, 5]
+# # numbers = [1, 2, 3, 4, 5]
 # squared = map(square, numbers)
 # print(list(squared))
+#
+# print(list(squared(square,numbers)))
 # =======
 # Введение в Алгоритмы
 # Операторы членства (Membership Operators)
@@ -81,10 +85,14 @@
 #     for i in range(len(lys)):
 #         if lys[i] == element:
 #             return i
-#     return -1
+#     return "No SUCH ELEMENT"
 #
-
+#
 # print(LinearSearch([1,2,3,4,5,2,1], 2))
+# print(LinearSearch([1,2,3,4,5,2,1], 3))
+# print(LinearSearch([1,2,3,4,5,2,1], 4))
+# print(LinearSearch([1,2,3,4,5,2,1], 5))
+# print(LinearSearch([1,2,3,4,5,2,1], 0))
 # ================ Бинарный поиск через итеративную реализацию
 
 """
@@ -103,8 +111,8 @@
 #     first = 0
 #     last = len(lys) - 1
 #     index = -1
-#     while (first <= last) and (index == -1):
-#         mid = (first + last) // 2
+#     while first <= last and index == -1:
+#         mid = first + last // 2
 #         if lys[mid] == val:
 #             index = mid
 #         else:
@@ -155,8 +163,8 @@
 #
 #
 # print(
-#     JumpSearch([1, 2, 3, 4, 5, 6, 7, 8, 9], 5),
-#     JumpSearch([1, 2, 3, 4, 5, 6, 7, 8, 9], 9),
+#     # JumpSearch([1, 2, 3, 4, 5, 6, 7, 8, 9], 5),
+#     JumpSearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 9),
 # )
 
 # https://techrocks.ru/2020/08/12/python-search-algorithms/
@@ -165,14 +173,13 @@ from datetime import datetime
 from random import randint
 
 ''' random list with 10 position generating'''
-N = 10000
+N = 100000
 a = []
 for i in range(N):
     a.append(randint(1, 99))
 
-
+a.sort()
 #
-
 # print(a)
 # bubble_solting_using_for
 # def bubble_solting_using_for(arr: list) -> list:
@@ -181,8 +188,7 @@ for i in range(N):
 #             if arr[j] > arr[j + 1]:
 #                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
 #     return arr
-#
-#
+
 # # bubble_solting_using_while
 # def bubble_solting_using_while(arr: list) -> list:
 #     i = 0
@@ -194,8 +200,8 @@ for i in range(N):
 #             j += 1
 #         i += 1
 #     return arr
-
-
+#
+#
 # print(bubble_solting_using_for(a))
 # print(bubble_solting_using_while(a))
 
@@ -207,9 +213,6 @@ def decorator_function2(function_sample, *param1, **param2):
     time_end = datetime.now()
     print(f'Runtime for execution of {str(function_sample)} is {time_end - time_start}')
 
-
-#
-#
 # decorator_function2(bubble_solting_using_for, a)
 # decorator_function2(bubble_solting_using_while, a)
 
@@ -224,7 +227,6 @@ def decorator_function2(function_sample, *param1, **param2):
 #                 m = j
 #             j = j + 1
 #         array[i], array[m] = array[m], array[i]
-#
 #
 # decorator_function2(select_sort, a)
 
@@ -243,97 +245,98 @@ def decorator_function2(function_sample, *param1, **param2):
 #             j -= 1
 #         # Вставляем элемент
 #         nums[j + 1] = item_to_insert
-#
+#     return nums
 
 # Проверяем, что оно работает
 # random_list_of_nums = [9, 1, 15, 28, 6]
+# print(insertion_sort(random_list_of_nums))
 # decorator_function2(insertion_sort, a)
 
 # ================== Пирамидальная сортировка
-# def heapify(nums, heap_size, root_index):
-#     # Индекс наибольшего элемента считаем корневым индексом
-#     largest = root_index
-#     left_child = (2 * root_index) + 1
-#     right_child = (2 * root_index) + 2
-#
-#     # Если левый потомок корня — допустимый индекс, а элемент больше,
-#     # чем текущий наибольший, обновляем наибольший элемент
-#     if left_child < heap_size and nums[left_child] > nums[largest]:
-#         largest = left_child
-#
-#     # То же самое для правого потомка корня
-#     if right_child < heap_size and nums[right_child] > nums[largest]:
-#         largest = right_child
-#
-#     # Если наибольший элемент больше не корневой, они меняются местами
-#     if largest != root_index:
-#         nums[root_index], nums[largest] = nums[largest], nums[root_index]
-#         # Heapify the new root element to ensure it's the largest
-#         heapify(nums, heap_size, largest)
-#
-#
-# def heap_sort(nums):
-#     n = len(nums)
-#
-#     # Создаём Max Heap из списка
-#     # Второй аргумент означает остановку алгоритма перед элементом -1, т.е.
-#     # перед первым элементом списка
-#     # 3-й аргумент означает повторный проход по списку в обратном направлении,
-#     # уменьшая счётчик i на 1
-#     for i in range(n, -1, -1):
-#         heapify(nums, n, i)
-#
-#     # Перемещаем корень Max Heap в конец списка
-#     for i in range(n - 1, 0, -1):
-#         nums[i], nums[0] = nums[0], nums[i]
-#         heapify(nums, i, 0)
-#
+def heapify(nums, heap_size, root_index):
+    # Индекс наибольшего элемента считаем корневым индексом
+    largest = root_index
+    left_child = (2 * root_index) + 1
+    right_child = (2 * root_index) + 2
+
+    # Если левый потомок корня — допустимый индекс, а элемент больше,
+    # чем текущий наибольший, обновляем наибольший элемент
+    if left_child < heap_size and nums[left_child] > nums[largest]:
+        largest = left_child
+
+    # То же самое для правого потомка корня
+    if right_child < heap_size and nums[right_child] > nums[largest]:
+        largest = right_child
+
+    # Если наибольший элемент больше не корневой, они меняются местами
+    if largest != root_index:
+        nums[root_index], nums[largest] = nums[largest], nums[root_index]
+        # Heapify the new root element to ensure it's the largest
+        heapify(nums, heap_size, largest)
+
+
+def heap_sort(nums):
+    n = len(nums)
+
+    # Создаём Max Heap из списка
+    # Второй аргумент означает остановку алгоритма перед элементом -1, т.е.
+    # перед первым элементом списка
+    # 3-й аргумент означает повторный проход по списку в обратном направлении,
+    # уменьшая счётчик i на 1
+    for i in range(n, -1, -1):
+        heapify(nums, n, i)
+
+    # Перемещаем корень Max Heap в конец списка
+    for i in range(n - 1, 0, -1):
+        nums[i], nums[0] = nums[0], nums[i]
+        heapify(nums, i, 0)
+
 #
 # # Проверяем, что оно работает
 # # random_list_of_nums = [35, 12, 43, 8, 51]
 # heap_sort(a)
 # print(a)
-#
-# decorator_function2(heap_sort, a)
-#
+
+decorator_function2(heap_sort, a)
+
 #
 # # ==================== Quick sort
-# def partition(nums, low, high):
-#     # Выбираем средний элемент в качестве опорного
-#     # Также возможен выбор первого, последнего
-#     # или произвольного элементов в качестве опорного
-#     pivot = nums[(low + high) // 2]
-#     i = low - 1
-#     j = high + 1
-#     while True:
-#         i += 1
-#         while nums[i] < pivot:
-#             i += 1
-#
-#         j -= 1
-#         while nums[j] > pivot:
-#             j -= 1
-#
-#         if i >= j:
-#             return j
-#
-#         # Если элемент с индексом i (слева от опорного) больше, чем
-#         # элемент с индексом j (справа от опорного), меняем их местами
-#         nums[i], nums[j] = nums[j], nums[i]
-#
-#
-# def quick_sort(nums):
-#     # Создадим вспомогательную функцию, которая вызывается рекурсивно
-#     def _quick_sort(items, low, high):
-#         if low < high:
-#             # This is the index after the pivot, where our lists are split
-#             split_index = partition(items, low, high)
-#             _quick_sort(items, low, split_index)
-#             _quick_sort(items, split_index + 1, high)
-#
-#     _quick_sort(nums, 0, len(nums) - 1)
-#
-#
-# quick_sort(a)
+def partition(nums, low, high):
+    # Выбираем средний элемент в качестве опорного
+    # Также возможен выбор первого, последнего
+    # или произвольного элементов в качестве опорного
+    pivot = nums[(low + high) // 2]
+    i = low - 1
+    j = high + 1
+    while True:
+        i += 1
+        while nums[i] < pivot:
+            i += 1
+
+        j -= 1
+        while nums[j] > pivot:
+            j -= 1
+
+        if i >= j:
+            return j
+
+        # Если элемент с индексом i (слева от опорного) больше, чем
+        # элемент с индексом j (справа от опорного), меняем их местами
+        nums[i], nums[j] = nums[j], nums[i]
+
+
+def quick_sort(nums):
+    # Создадим вспомогательную функцию, которая вызывается рекурсивно
+    def _quick_sort(items, low, high):
+        if low < high:
+            # This is the index after the pivot, where our lists are split
+            split_index = partition(items, low, high)
+            _quick_sort(items, low, split_index)
+            _quick_sort(items, split_index + 1, high)
+
+    _quick_sort(nums, 0, len(nums) - 1)
+
+
+# print(quick_sort(a))
 # print(a)
-# decorator_function2(heap_sort, a)
+decorator_function2(heap_sort, a)
